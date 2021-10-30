@@ -14,3 +14,25 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/cliente', function (){
+    return "Hello World!";
+});
+
+Route::get('/admin//cliente', function (){
+    return "Admin - Hello World!";
+});
+
+Route::get('/cliente-echo', function (){
+    echo "Texto com echo";
+});
+
+Route::get('/produto/{name}/{id}', function ($name, $id){
+    return "Produto $name - $id";
+});
+
+Route::get('/fornecedor/{name}/{id?}', function ($name, $id = null){
+    return "Fornecedor $name - $id";
+});
+
+//CoC Convention over Configuration
