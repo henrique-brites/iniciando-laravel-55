@@ -12,31 +12,46 @@ use \Illuminate\Http\Request;
 |
 */
 
+//MVC - Model - View - Controller
+
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); //helper
 });
 
-Route::get('/cliente', function (){
-    //csrf-token
-    $csrfToken = csrf_token();
-    $html = <<< HTML
-<html>
-<body>
-    <h1>Cliente</h1>
-    <form action="/cliente/cadastrar" method="post">
-        <input type="hidden" name="_token" value="$csrfToken">
-        <input type="text" name="name" />
-        <button type="submit">Enviar</button>
-    </form>
-</body>
-</html>
-HTML;
-    return $html;
+Route::get('/cliente/cadastrar', function(){
+    $nome = 'Henrique Brites';
+    $variavel1 = 'valor1';
+    /*return view('cadastrar', [
+        'nome' => $nome,
+        'variavel1' => '$variavel1
+    ]);*/
+    //return view('cadastrar', compact('nome', 'variavel1'));
+    return view('cliente.cadastrar')
+        ->with('nome', $nome)
+        ->with('variavel1', $variavel1);
 });
 
-Route::post('/cliente/cadastrar', function(Request $request){
-    echo $request->get('name');
-});
+//Route::get('/cliente', function (){
+//    //csrf-token
+//    $csrfToken = csrf_token();
+//    $html = <<< HTML
+//<html>
+//<body>
+//    <h1>Cliente</h1>
+//    <form action="/cliente/cadastrar" method="post">
+//        <input type="hidden" name="_token" value="$csrfToken">
+//        <input type="text" name="name" />
+//        <button type="submit">Enviar</button>
+//    </form>
+//</body>
+//</html>
+//HTML;
+//    return $html;
+//});
+//
+//Route::post('/cliente/cadastrar', function(Request $request){
+//    echo $request->get('name');
+//});
 
 //Route::get('/admin/cliente', function (){
 //    return "Admin - Hello World!";
