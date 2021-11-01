@@ -23,7 +23,8 @@ Route::get('/test', function () {
     $variavel1 = 'valor1';
     return view('test')
         ->with('nome', $nome)
-        ->with('variavel1', $variavel1);
+        ->with('variavel1', $variavel1)
+        ->with('test', 'Tenho valor');
 });
 
 Route::get('/cliente/cadastrar', function(){
