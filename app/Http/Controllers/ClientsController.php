@@ -14,7 +14,7 @@ class ClientsController extends Controller
             'variavel1' => '$variavel1
         ]);*/
         //return view('cadastrar', compact('nome', 'variavel1'));
-        return view('cliente.cadastrar')
+        return view('admin.cliente.cadastrar')
             ->with('nome', $nome)
             ->with('variavel1', $variavel1);
     }

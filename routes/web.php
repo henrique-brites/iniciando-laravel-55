@@ -1,6 +1,8 @@
 <?php
 
 use \Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +18,16 @@ use \Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome'); //helper
+});
+
+Route::group(['prefix' => '/'], function (){
+    Route::get('/cliente/cadastrar', 'ClientsController@cadastrar');
+});
+
+Route::group(['prefix' => '/admin'], function (){
+    Route::group(['prefix' => '/cliente'], function () {
+        Route::get('cadastrar', 'ClientsController@cadastrar');
+    });
 });
 
 Route::get('/controller/cliente/cadastrar', 'ClientsController@cadastrar');
