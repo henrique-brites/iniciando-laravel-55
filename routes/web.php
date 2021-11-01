@@ -18,6 +18,14 @@ Route::get('/', function () {
     return view('welcome'); //helper
 });
 
+Route::get('/test', function () {
+    $nome = 'Henrique Brites';
+    $variavel1 = 'valor1';
+    return view('test')
+        ->with('nome', $nome)
+        ->with('variavel1', $variavel1);
+});
+
 Route::get('/cliente/cadastrar', function(){
     $nome = 'Henrique Brites';
     $variavel1 = 'valor1';
