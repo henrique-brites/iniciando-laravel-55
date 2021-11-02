@@ -2,10 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Client;
 use Illuminate\Http\Request;
 
 class ClientsController extends Controller
 {
+
+    public function listar(){
+        $clients = Client::all();
+        return view('admin.cliente.list', compact('clients'));
+    }
+
     public function cadastrar(){
         $nome = 'Henrique Brites';
         $variavel1 = 'valor1';
