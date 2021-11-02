@@ -13,7 +13,19 @@ class ClientsController extends Controller
         return view('admin.cliente.list', compact('clients'));
     }
 
-    public function cadastrar(){
+    public function formCadastar(){
+        return view('admin.cliente.create');
+    }
+
+    public function cadastrar(Request $request){
+        $client = new Client();
+        $client->name = $request->name;
+        $client->email = $request->email;
+        $client->save();
+        return redirect()->to('/admin/client');
+    }
+
+    /*public function cadastrar(){
         $nome = 'Henrique Brites';
         $variavel1 = 'valor1';
         /*return view('cadastrar', [
@@ -21,10 +33,10 @@ class ClientsController extends Controller
             'variavel1' => '$variavel1
         ]);*/
         //return view('cadastrar', compact('nome', 'variavel1'));
-        return view('admin.cliente.cadastrar')
+        /*return view('admin.cliente.cadastrar')
             ->with('nome', $nome)
             ->with('variavel1', $variavel1);
-    }
+    }*/
 
     public function excluir(){
 
